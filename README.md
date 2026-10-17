@@ -23,6 +23,13 @@ sans que les comptes accueillis puissent se découvrir entre eux.
 
 > Langue : l'application et sa documentation sont en français.
 
+<p align="center">
+  <img src="docs/img/administration.png" width="720"
+       alt="Écran d'administration de Cloisons : mode, compteurs et contrôles de santé">
+  <br>
+  <em>Paramètres d'administration → Cloisons : mode, compteurs et contrôles de santé.</em>
+</p>
+
 ---
 
 ## Sommaire

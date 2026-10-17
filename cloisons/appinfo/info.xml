@@ -13,6 +13,7 @@
 	<website>https://github.com/oboeglen/nextcloud-cloisons</website>
 	<bugs>https://github.com/oboeglen/nextcloud-cloisons/issues</bugs>
 	<repository type="git">https://github.com/oboeglen/nextcloud-cloisons.git</repository>
+	<screenshot>https://raw.githubusercontent.com/oboeglen/nextcloud-cloisons/main/docs/img/administration.png</screenshot>
 	<dependencies>
 		<php min-version="8.2"/>
 		<nextcloud min-version="34" max-version="35"/>
