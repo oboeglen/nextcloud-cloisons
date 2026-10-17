@@ -65,7 +65,7 @@ class AdminController extends OCSController {
 		]);
 	}
 
-	#[PasswordConfirmationRequired]
+	#[PasswordConfirmationRequired(strict: true)]
 	#[ApiRoute(verb: 'PUT', url: '/api/v1/mode')]
 	public function setMode(string $mode): DataResponse {
 		try {
@@ -102,7 +102,7 @@ class AdminController extends OCSController {
 		return $this->state();
 	}
 
-	#[PasswordConfirmationRequired]
+	#[PasswordConfirmationRequired(strict: true)]
 	#[ApiRoute(verb: 'DELETE', url: '/api/v1/zones/{id}')]
 	public function deleteZone(string $id): DataResponse {
 		if (!$this->zones->zoneExists($id)) {
@@ -113,7 +113,7 @@ class AdminController extends OCSController {
 		return $this->state();
 	}
 
-	#[PasswordConfirmationRequired]
+	#[PasswordConfirmationRequired(strict: true)]
 	#[ApiRoute(verb: 'POST', url: '/api/v1/zones/{id}/members')]
 	public function addMember(string $id, string $uid): DataResponse {
 		if (!$this->zones->zoneExists($id) || !$this->userManager->userExists($uid)) {
@@ -124,7 +124,7 @@ class AdminController extends OCSController {
 		return $this->state();
 	}
 
-	#[PasswordConfirmationRequired]
+	#[PasswordConfirmationRequired(strict: true)]
 	#[ApiRoute(verb: 'DELETE', url: '/api/v1/zones/{id}/members/{uid}')]
 	public function removeMember(string $id, string $uid): DataResponse {
 		if ($this->zones->zoneOf($uid) === $id) {
