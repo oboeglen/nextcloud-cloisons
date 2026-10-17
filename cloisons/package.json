@@ -1,0 +1,36 @@
+{
+  "name": "cloisons",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloisonnement des comptes Nextcloud \u2014 \u00e9cran d'administration",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "scripts": {
+    "build": "vite --mode production build",
+    "dev": "vite --mode development build --watch"
+  },
+  "browserslist": [
+    "extends @nextcloud/browserslist-config"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@nextcloud/axios": "2.6.0",
+    "@nextcloud/dialogs": "7.5.0",
+    "@nextcloud/files": "4.1.0",
+    "@nextcloud/l10n": "3.4.1",
+    "@nextcloud/password-confirmation": "6.2.1",
+    "@nextcloud/router": "3.2.0",
+    "@nextcloud/vue": "9.13.1",
+    "vue": "3.5.44",
+    "vue-material-design-icons": "5.4.0"
+  },
+  "devDependencies": {
+    "@nextcloud/browserslist-config": "3.1.2",
+    "@nextcloud/vite-config": "2.5.4",
+    "sass": "1.93.2",
+    "vite": "7.3.6",
+    "typescript": "5.9.3"
+  }
+}

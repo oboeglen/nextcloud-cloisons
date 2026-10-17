@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>cloisons</id>
+	<name>Cloisons</name>
+	<summary>Isole chaque compte dans sa propre cloison, comme sur une instance dédiée</summary>
+	<description><![CDATA[Cloisons isole les comptes d'une instance mutualisée : un compte ne peut voir, rechercher, contacter, inviter ni partager qu'avec les comptes de sa propre cloison, dans toutes les applications certifiées. Les groupes restent des droits d'accès (applications, OIDC) et n'ouvrent plus la visibilité.]]></description>
+	<version>1.0.1</version>
+	<licence>agpl</licence>
+	<author>Azure Informatique</author>
+	<namespace>Cloisons</namespace>
+	<category>security</category>
+	<website>https://github.com/oboeglen/nextcloud-cloisons</website>
+	<bugs>https://github.com/oboeglen/nextcloud-cloisons/issues</bugs>
+	<repository type="git">https://github.com/oboeglen/nextcloud-cloisons.git</repository>
+	<dependencies>
+		<php min-version="8.2"/>
+		<nextcloud min-version="34" max-version="35"/>
+	</dependencies>
+	<background-jobs>
+		<job>OCA\Cloisons\BackgroundJob\Maintenance</job>
+	</background-jobs>
+	<repair-steps>
+		<post-migration>
+			<step>OCA\Cloisons\Migration\InstallDefaults</step>
+		</post-migration>
+		<install>
+			<step>OCA\Cloisons\Migration\InstallDefaults</step>
+		</install>
+	</repair-steps>
+	<commands>
+		<command>OCA\Cloisons\Command\Status</command>
+		<command>OCA\Cloisons\Command\Zone</command>
+		<command>OCA\Cloisons\Command\Mode</command>
+		<command>OCA\Cloisons\Command\SelfTest</command>
+		<command>OCA\Cloisons\Command\Scan</command>
+		<command>OCA\Cloisons\Command\RepairActivity</command>
+	</commands>
+	<settings>
+		<admin>OCA\Cloisons\Settings\Admin</admin>
+		<admin-section>OCA\Cloisons\Settings\AdminSection</admin-section>
+	</settings>
+</info>

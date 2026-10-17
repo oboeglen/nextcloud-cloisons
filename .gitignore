@@ -1,0 +1,17 @@
+# Banc de test
+bench/.env
+bench/html/
+bench/db/
+bench/conf/*
+!bench/conf/README.md
+tests/out/
+tests/inventory/
+
+# Construction
+node_modules/
+cloisons/js/*.map
+vendor/
+__pycache__/
+*.pyc
+*.secret
+.DS_Store

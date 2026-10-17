@@ -1,0 +1,35 @@
+# Banc de test de Cloisons : Nextcloud jetable, données fictives, 127.0.0.1 seulement.
+# Copier .env.example en .env (mots de passe aléatoires), puis voir docs/TESTS.md.
+name: cloisons-banc
+services:
+  db:
+    image: mariadb:11.8.8
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DBROOT}
+      MARIADB_DATABASE: nextcloud
+      MARIADB_USER: nextcloud
+      MARIADB_PASSWORD: ${DBPW}
+    volumes: [ "./db:/var/lib/mysql" ]
+    restart: "no"
+  redis:
+    image: redis:8.6.4
+    restart: "no"
+  app:
+    image: nextcloud:${NC_VERSION:-34.0.4}-apache
+    depends_on: [db, redis]
+    ports: [ "127.0.0.1:18980:80" ]
+    environment:
+      MYSQL_HOST: db
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: ${DBPW}
+      NEXTCLOUD_ADMIN_USER: bancadmin
+      NEXTCLOUD_ADMIN_PASSWORD: ${ADMPW}
+      NEXTCLOUD_TRUSTED_DOMAINS: "127.0.0.1 localhost"
+      REDIS_HOST: redis
+      PHP_MEMORY_LIMIT: 1G
+    volumes:
+      - "./html:/var/www/html"
+      - "../cloisons:/var/www/html/custom_apps/cloisons"
+    restart: "no"
