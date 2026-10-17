@@ -4,7 +4,7 @@ set -e
 CONF=${CLOISONS_CONF:-"$(cd "$(dirname "$0")/../bench" && pwd)/conf"}
 BASE=${CLOISONS_BASE:-http://127.0.0.1:18980}
 E="docker exec -u www-data cloisons-banc-app-1 php occ"
-for g in "Assistant IA" E2EE Developpement Domotique IA Office Photos Medias "Intranet" Signatures Talk Vault; do $E group:add "$g" >/dev/null 2>&1 || true; done
+for g in "Assistant IA" E2EE Developpement Domotique IA Office Photos Medias "Intranet" Signatures Talk Coffre; do $E group:add "$g" >/dev/null 2>&1 || true; done
 mk(){ uid=$1; dn=$2; mail=$3; shift 3
   docker exec -u www-data -e OC_PASS="$PW" cloisons-banc-app-1 php occ user:add --password-from-env --display-name="$dn" "$uid" >/dev/null
   $E user:setting -- "$uid" settings email "$mail" >/dev/null
